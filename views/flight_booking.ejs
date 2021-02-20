@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/flight_booking.css' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+  <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/tours">Tours</a></li>
+        <li><a href="/hotels">Hotels</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+
+
+
+  <!-- Flight Booking -->
+  <section id="intro">
+    <div class="bg">
+      
+    <div class="block">
+      <h1>Flight Booking to your travel!</h1>
+      <p>Experience the various exciting tour and travel packages and Make hotel reservations, find vacation packages, search cheap hotels and events</p>
+      <div class="travel-icons">
+        <a href="/tours"><i class="fas fa-globe"></i><span>Tours</span></a>
+        <a href="/flights_booking"><i class="fas fa-plane"></i><span>Flights</span></a>
+        <a href="/book_travels"><i class="fas fa-taxi"></i><span>Car Rentals</span></a>
+        <a href="/hotels"><i class="fas fa-bed"></i><span>Hotel</span></a>
+      </div>
+    </div>
+    <div class="intro-container">
+      <div class="box">
+        <% if(success != '') { %>
+          <div class="alert alert-success alert-dismissible" role="alert" style="display: inline-block; margin-left: 18rem;">
+            <strong>Success:&nbsp;</strong> <%= success %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <% } %>
+        <form action="/flights_booking" method="post">
+         
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" placeholder="Enter your Name" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="phone" class="form-control" name="phone" placeholder="Enter your Number" required>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="email" class="form-control" name="email" placeholder="Enter your Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="flying_from" placeholder="Flying From" required>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="flying_to" placeholder="Flying To" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="date" class="form-control" name="arrival_date" placeholder="Arrival Date" required>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="date" class="form-control" name="departure_date" placeholder="Departure Date" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <select class="custom-select" name="no_of_adults" style="cursor: pointer;" required>
+                <option value disabled selected>No. of Adults</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select class="custom-select" name="no_of_children" style="cursor: pointer;" required>
+                <option value disabled selected>No. of Children</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select class="custom-select" name="min_price" style="cursor: pointer;" required>
+                <option value disabled selected>Min Price</option>
+                <option value="2000">2000</option>
+                <option value="4000">4000</option>
+                <option value="6000">6000</option>
+                <option value="8000">8000</option>
+                <option value="10000">10000</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select class="custom-select" name="max_price" style="cursor: pointer;" required>
+                <option value disabled selected>Max Price</option>
+                <option value="2000">2000</option>
+                <option value="4000">4000</option>
+                <option value="6000">6000</option>
+                <option value="8000">8000</option>
+                <option value="10000">10000</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-danger text-center form-control">Book Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- Travel Content  -->
+  <section id="travel-container">
+    <div class="travels">
+      <div class="heading">
+        <h1>Top Tour Packages</h1>
+        <div class="title-line">
+          <div class="tl1"></div>
+          <div class="tl2"></div>
+          <div class="tl3"></div>
+        </div>
+        <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
+      </div>
+      <div class="cards">
+        <% if(record.length > 0) {
+       record.forEach((row)=>{
+      if(parseInt(row.Discount)> 30){
+
+      %>
+        <div class="travel-card">
+
+          <div class="image">
+            <li><a><%= row.Discount %>%</a><span>off</span></li>
+            <img src="/uploads/<%= row.Package_image %>" alt="">
+          </div>
+          <div class="travel-card-content">
+            <h3><a href="/tours/book/<%= row._id %>"><%= row.Package_name %></a></h3>
+            <div class="icons">
+              <i class="fas fa-clock" style="color: #8e8e1f;" title="Tour timing"></i>
+              <i class="fas fa-info-circle" style="color:green" title="View more details"></i>
+              <i class="fas fa-money-bill-alt" style="color: #f19e07;" title="Price"></i>
+              <i class="fas fa-map-marker-alt" style="padding-right: 10px !important; color: #1b1b8e;"
+                title="Location"></i>
+            </div>
+          </div>
+        </div>
+        <%  }})} %>
+      </div>
+    </div>
+  </section>
+
+
+  <%- include('index-testimonials.ejs') %>
+
+
+
+  <%- include('index-footer.ejs') %>
+
+</body>
+
+</html>

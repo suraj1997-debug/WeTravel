@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/packages.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Packages</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages">Packages</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('package_sidebar.ejs') %>
+  
+  <div class="travel-container">
+    <div class="content-box">
+        <div class="card">
+            <div class="front">
+                <div class="card-left">
+                    <a href="/packages/CreatePackage"><i class="fas fa-plus"></i></a>
+                </div>
+                <div class="card-right">
+                    <a href="/packages/CreatePackage">Create Package</a> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <div class="card-left">
+                    <a href="/packages/ViewPackage"><i class="fas fa-eye"></i></a>
+                </div>
+                <div class="card-right">
+                    <a href="/packages/ViewPackage">View All Packages</a> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+          <div class="front">
+              <div class="card-left">
+                  <a href="/packages/CreatePackageDestination"><i class="fas fa-plus"></i></a>
+              </div>
+              <div class="card-right">
+                  <a href="/packages/CreatePackageDestination">Create Package Destination</a> 
+              </div>
+          </div>
+      </div>
+      <div class="card">
+        <div class="front">
+            <div class="card-left">
+                <a href="/packages/ViewPackageDestination"><i class="fas fa-eye"></i></a>
+            </div>
+            <div class="card-right">
+                <a href="/packages/ViewPackageDestination">View Package Destinations</a> 
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="front">
+            <div class="card-left">
+                <a href="/packages/CreatePackage"><i class="fas fa-plus"></i></a>
+            </div>
+            <div class="card-right">
+                <a href="/packages/CreateHotelPackage">Create Hotel Package</a> 
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="front">
+            <div class="card-left">
+                <a href="/packages/ViewPackage"><i class="fas fa-eye"></i></a>
+            </div>
+            <div class="card-right">
+                <a href="/packages/ViewHotelPackage">View All Hotel Packages</a> 
+            </div>
+        </div>
+    </div>
+    </div>
+
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+</body>
+
+</html>

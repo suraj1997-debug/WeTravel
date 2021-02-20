@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/admin-booking.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Manage Bookings</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/booking_details">Manage Booking</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('booking-sidebar.ejs') %>
+  
+  <div class="travel-container">
+    <div class="content-box">
+        <div class="card">
+            <div class="front">
+                <div class="card-left">
+                    <a href="/booking_details/tour_bookings"><i class="fas fa-eye"></i></a>
+                </div>
+                <div class="card-right">
+                    <a href="/booking_details/tour_bookings">View Tour Bookings</a> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="front">
+                <div class="card-left">
+                    <a href="/booking_details/flight_bookings"><i class="fas fa-eye"></i></a>
+                </div>
+                <div class="card-right">
+                    <a href="/booking_details/flight_bookings">View Flight bookings</a> 
+                </div>
+            </div>
+        </div>
+        <div class="card">
+          <div class="front">
+              <div class="card-left">
+                  <a href="/booking_details/hotel_bookings"><i class="fas fa-eye"></i></a>
+              </div>
+              <div class="card-right">
+                  <a href="/booking_details/hotel_bookings">View Hotel Bookings</a> 
+              </div>
+          </div>
+      </div>
+      <div class="card">
+        <div class="front">
+            <div class="card-left">
+                <a href="/booking_details/travel_bookings"><i class="fas fa-eye"></i></a>
+            </div>
+            <div class="card-right">
+                <a href="/booking_details/travel_bookings">View Travel Bookings</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+</body>
+
+</html>

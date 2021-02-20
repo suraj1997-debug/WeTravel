@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index-tour.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+  <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li class="active"><a href="/tours" class="current">Tours</a></li>
+        <li><a href="/hotels">Hotels</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+
+
+  <!-- Page Header -->
+
+  <section id="page-header">
+
+    <div class="heading">
+      <h1>Tour Packages</h1>
+    </div>
+  </section>
+
+ 
+  <!-- page-content  -->
+
+  <section id="page-content">
+    <div class="content-container">
+      <div class="cards">
+        <% if(records.length > 0){
+        records.forEach((row)=>{
+     %>
+        <div class="card">
+          <li><a><%= row.Discount %>%</a><span>off</span></li>
+          <div class="card-top">
+            <div class="card-img">
+              <img src="/uploads/<%= row.Package_image %>" alt="">
+            </div>
+            <div class="card-top-content">
+              <h1><%= row.Package_location %></h1>
+              <div class="trip-contents">
+                <h2>Trip Duration :&nbsp;
+                  <span><%= row.Package_Duration %>&nbsp;days/<%= parseInt(row.Package_Duration)-1 %> nights</span>
+                </h2>
+                <h2>Package Features :&nbsp; <span><%= row.Package_features %></span></h2>
+               <div class="midbox">
+                <div class="mid">
+                  <div class="icons">
+                    <i class="fas fa-utensils"></i>
+                    <i class="fas fa-bed"></i>
+                    <i class="fas fa-taxi"></i>
+                    <i class="fas fa-binoculars" style="padding-left: 29px;"></i>
+                  </div>
+                  <div class="icon-text">
+                    <p>Meals</p>
+                    <p>Hotels</p>
+                    <p>Transfer</p>
+                    <p>SightSeeing</p>
+                  </div>
+                </div>
+                <div class="stars">
+                  <h3 style="font-size: 1.2rem; padding-top: 10px; font-weight: bold; color: #484242;">Ratings:&nbsp;</h3>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-bottom">
+            <div class="card-bottom-content">
+              <h1>Package Description</h1>
+              <p><%= row.Package_Details %></p>
+            </div>
+            <div class="card-bottom-price">
+              <h1>Price: &nbsp;<span><%= row.Package_Price %></span></h1>
+              <a href="/tours/book/<%= row._id %>">View Details</a>
+            </div>
+          </div>
+        </div>
+        <% })} %>
+      </div>
+    </div>
+  </section>
+
+  <%- include('index-testimonials.ejs') %>
+
+  <%- include('index-footer.ejs') %>
+
+</body>
+
+</html>

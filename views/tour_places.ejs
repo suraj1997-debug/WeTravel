@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/tour_places.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+ <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="/index" >Home</a></li>
+        <li class="active"><a href="/tours" class="current">Tours</a></li>
+        <li><a href="/hotels">Hotels</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+<!-- Page Header -->
+
+<section id="page-header">
+    <% if(record.length > 0){
+        record.forEach((row)=>{
+            if(row.Package_name == records.Package_name){
+     %>
+  <div class="heading">
+    <h1><%= row.Package_Type %></h1>
+    <h2><%= row.Package_name %></h2>
+  </div>
+  <% } }) }  %>
+</section>
+
+
+
+<!-- Page Content -->
+
+<section id="page-content">
+    <div class="page-container">
+        <% if(record.length > 0){
+        record.forEach((row)=>{
+            if(row.Package_name == records.Package_name){
+     %>
+      <div class="upper">
+       <a class="btn btn-danger" href="/tours/book/<%= row._id %>"><span><i class="fas fa-angle-left"></i></span>&nbsp;Back</a>
+    </div>
+     <% } }) }  %>
+     <h1 style="margin-top: 1rem;"><i class="fas fa-location-arrow"></i> &nbsp;<%= records.Package_location %></h1>
+     <div class="place-image">
+       <img src="/uploads/<%= records.destination_image %>" alt="">
+     </div>
+    <h1 style="margin-top: 4rem;"><i class="fas fa-info-circle"></i> &nbsp;Description</h1>
+    <div class="place-Description">
+     <p><%= records.Description %></p>
+    </div>
+
+    </div>
+</section>
+
+<%- include('index-testimonials.ejs') %>
+
+<!-- terms -->
+
+<section id="terms">
+  <h1>Terms & Conditions</h1>
+  <div class="terms-container">
+  <div class="policy">
+    <div class="payment">
+      <h2>Payment Policy</h2>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p><i class="fas fa-check"></i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum.</p>
+    </div>
+    <div class="cancel">
+      <h2>Cancellation Policy</h2>
+      <h3>If you cancel your Holiday.</h3>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p><i class="fas fa-check"></i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum.</p>
+    </div>
+  </div>
+  <div class="privacy">
+    <h2>Privacy Policy</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea suscipit exercitationem libero vitae sint doloribus quibusdam, expedita enim dolor dignissimos quos neque delectus ducimus voluptas! Similique alias voluptatem culpa tempore nobis sit necessitatibus eaque totam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium id ipsam iure vitae quidem aliquid, sed labore consequuntur quo assumenda quibusdam repellat fugit?</p>
+  </div>
+</div>
+</section>
+
+
+
+
+<%- include('index-footer.ejs') %>
+
+</body>
+
+</html>

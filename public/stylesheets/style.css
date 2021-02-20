@@ -1,0 +1,51 @@
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.container .row h2{
+  margin-top: 4rem;
+  margin-left: 15rem;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+
+#signupbox{
+  margin-top: 50px;
+    width: 48rem;
+    margin-left: 15rem;
+    
+}
+
+.panel{
+  width: 35rem;
+  margin-top: 8rem;
+}
+
+.panel-heading{
+  background-color: #ea6424;
+  border-radius: 5px 5px 0px 0px;
+  padding: 7px;
+}
+
+.panel-title{
+  font-weight: bold;
+  text-align: center;
+    font-size: 1.5rem;
+    color: #eae7e7;
+}
+
+.panel-body{
+  border-radius: 0px 0px 5px 5px;
+  padding: 15px 33px;
+  border: 2px solid #e87d4a;
+  border-top: none;
+  outline: none;
+}
+
+#button{
+  text-align: center;
+
+}

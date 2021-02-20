@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/dashboard.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+ <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Welcome!!</h1>
+      <h2>Admin</h2>
+    </div>
+  </div>
+
+  <div class="sidebar" style="height: 89vh !important;">
+    <div class="row">
+      <div class="profile-image">
+      </div>
+      <% if(adminUser) { %>
+      <h4><%= adminUser %> </h4>
+      <% } %>
+    </div>
+    <div class="icons" style="margin-top: -14px !important;">
+      <a href="/dashboard" class="awitem"><i class="fas fa-desktop current"><span>Dashboard</span></i></a>
+      <a href="/categories" class="awitem"><i class="fas fa-th"><span>Categories</span></i></a>
+      <a href="/packages" class="awitem"><i class="fas fa-tasks"><span>Packages</span></i></a>
+      <a href="/booking_details" class="awitem"><i class="fas fa-list-alt"><span>Manage Booking</span></i></a>
+      <a href="/enquiry" class="awitem"><i class="fas fa-file-alt"><span>Manage Enquiries</span></i></a>
+    </div>
+
+  </div>
+
+  <div class="content">
+    <div class="content-boxes">
+      <div class="content-box">
+        <div class="content-heading">
+          <a> <i class="fas fa-user"></i> </a>
+        </div>
+        <div class="content-footer">
+          <h1><span><%= parseInt(record.length)- 1 %></span> &nbsp; Users</h1> 
+        </div>
+      </div>
+      <div class="content-box">
+        <div class="content-heading" >
+          <a> <i class="fas fa-tasks"></i> </a>
+        </div>
+        <div class="content-footer">
+          <h1><span><%= records.length %></span> &nbsp; Tour Packages</h1>
+        </div>
+      </div>
+      <div class="content-box">
+        <div class="content-heading" >
+          <a> <i class="fas fa-tasks"></i> </a>
+        </div>
+        <div class="content-footer">
+          <h1><span><%= record2.length %></span> &nbsp;Hotel Packages</h1>
+        </div>
+      </div>
+      <div class="content-box">
+        <div class="content-heading" >
+          <a> <i class="fas fa-chart-bar" ></i> </a>
+        </div>
+        <div class="content-footer">
+          <h1><span><%= record1.length %></span> &nbsp; Enquiry</h1>
+        </div>
+      </div>
+     
+    </div>
+    
+  
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+</body>
+
+</html>

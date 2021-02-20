@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/hotel_booking_details.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+        <h1>Travel Booking Details</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/booking_details">Booking</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/booking_details/hotel_bookings">Hotel Booking</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('booking-sidebar.ejs') %>
+  
+  <div class="travel-container">
+     <div class="table-container" style=" margin: 0px 13px; margin-top: 2px;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Booking Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col">Hotel</th>
+                <th scope="col">Discount</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col" colspan="1">Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-light" style="color:#631919; font-weight: bold;">
+                <% if(records.length > 0){
+                   records.forEach((row)=>{
+                %>
+              <tr> 
+                <td><%= row._id %></td>
+                <td><%= row.Name %></td>
+                <td><%= row.Number %></td>
+                <td><%= row.Email %></td>
+                <td><%= row.Hotel_Name %></td>
+                <td><%= row.Discount %></td>
+                <td><%= row.Price %></td>
+                <td><%= row.date %></td>
+                <td><a href="/booking_details/hotel_bookings/delete/<%= row._id %>"><i class="fas fa-trash-alt" style="color: rgb(150 11 11); font-weight: bold;"></i></a></td>
+              </tr>
+             <% })} %>
+            </tbody>
+          </table>
+          
+     </div>
+   
+
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

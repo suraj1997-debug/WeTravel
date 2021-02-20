@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/update_package_category.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Package Category</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/categories/PackageCategory">Package Category</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/categories/PackageCategory/viewPackageCategory">View All Categories</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/categories/PackageCategory/viewPackageCategory/edit/:id">Update Category</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('sidebar.ejs') %>
+  
+  <div class="travel-container">
+    <% if(success != '') { %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <strong>Success:&nbsp;</strong> <%= success %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <% } %>
+      <a href="/categories/PackageCategory/viewPackageCategory" class="nav-link">View All Categories</a>
+   <div class="form-container">
+    <form action="/categories/PackageCategory/viewPackageCategory/edit/<%= record._id %>" method="post" autocomplete="off">
+     
+      <div class="form-group row">
+        <label for="type" class="col-sm-2 col-form-label">Package Type</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="package_type" value="<%= record.Package_Type %>">
+        </div>
+      </div>
+      <div class="form-group row" style="margin-top: 4rem;">
+        <div class="col-sm-10 button">
+          <button type="submit" class="btn btn-primary">Update Category</button>
+         
+        </div>
+      </div>
+    
+    </form>
+   </div>
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

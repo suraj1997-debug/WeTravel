@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/enquiry.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+  <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Manage Enquiries</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/enquiry">Enquiries</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('enquiry_sidebar.ejs') %>
+  
+  <div class="travel-container">
+     <div class="table-container" style=" margin: 0px 13px; margin-top: 1.6rem;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+             
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Message</th>
+                <th scope="col" colspan="3">Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-light" style="color:#631919; font-weight: bold;">
+                <% if(records.length > 0){
+                   records.forEach((row)=>{
+                %>
+              <tr> 
+                <td><%= row.Full_Name %></td>
+                <td><%= row.Email %></td>
+                <td><%= row.Message %></td>
+                <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal<%= row._id %>"><i class="fas fa-eye" style="color: rgb(25 27 26); font-weight: bold;"></i></button></td>
+                <td><a href="#"><i class="fas fa-reply" style="color: yellowgreen; font-weight: bold; font-size: 1.4rem; margin-top: 5px;"></i></a></td>
+                <td><a href="/enquiry/delete/<%= row._id %>"><i class="fas fa-trash-alt" style="color: rgb(150 11 11); font-weight: bold; font-size: 1.4rem; margin-top: 5px;"></i></a></td>
+              </tr>
+              <div id="myModal<%= row._id %>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header" style="width: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title"><%- row.Full_Name %></h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4 style="font-size: 1rem;"><%- row.Email %></h4>  
+                      <p><%- row.Message %></p>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+              
+                </div>
+              </div>
+             <% })} %>
+            </tbody>
+          </table>
+          
+     </div>
+   
+
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

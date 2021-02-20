@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/update_hotel_package.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Update Hotel Package</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages/ViewHotelPackage">View Hotel Package</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages/ViewHotelPackage/edit/:id">Update Hotel Package</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('package_sidebar.ejs') %>
+  
+  <div class="travel-container">
+    <% if(success != '') { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <strong>Success:&nbsp;</strong> <%= success %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    
+     
+   <div class="form-container">
+    <form action="/packages/ViewHotelPackage/edit/<%= record._id %>" method="post" enctype="multipart/form-data" autocomplete="off">
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Package Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="package_name" value="<%= record.Package_name %>">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="location" class="col-sm-2 col-form-label" style="margin-top: 1rem;">Package Location</label>
+        <div class="col-sm-10" style="margin-top: 1rem;">
+          <input type="text" class="form-control" name="package_location" value="<%= record.Package_location %>">
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label for="address" class="col-sm-2 col-form-label">Package Address</label>
+        <div class="col-sm-10 form-input">
+          <textarea class="form-control" name="package_address" style="resize: none;color: rgb(17, 16, 16);font-weight: bold;font-size: 0.9rem;" rows="3" ><%= record.Package_address %></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="duration" class="col-sm-2 col-form-label">Hotel Stay</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="package_duration" value="<%= record.Package_Duration %>" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="price" class="col-sm-2 col-form-label">Package Price</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="package_price" value="<%= record.Package_Price %>" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="ratings" class="col-sm-2 col-form-label">Ratings</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="package_ratings" value="<%= record.Ratings %>" >
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label for="description" class="col-sm-2 col-form-label">Package Description</label>
+        <div class="col-sm-10 form-input">
+          <textarea  class="form-control" name="package_desc" style="resize: none;color: rgb(17, 16, 16);font-weight: bold;font-size: 0.9rem;" rows="3" ><%= record.Package_Description %></textarea>
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label for="tickets" class="col-sm-2 col-form-label">Tickets Available</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="package_tickets" value="<%= record.Tickets_available %>" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="discount" class="col-sm-2 col-form-label">Discount</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="discount" value="<%= record.Discount %>" >
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label for="map" class="col-sm-2 col-form-label">Package Map</label>
+        <div class="col-sm-10 form-input">
+          <textarea class="form-control" name="package_map" style="resize: none;color: rgb(17, 16, 16);font-weight: bold;font-size: 0.9rem;" rows="3"><%= record.Package_map %></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="img" class="col-sm-2 col-form-label" style="margin-top: 0.9rem;">Package Image</label>
+        <div class="col-sm-10">
+        <input type="file" style="padding: 4px 0px; font-size: 0.9rem; width: 24rem;" class="form-control-file img" name="hotel_img">
+      </div>
+      </div>
+      <% if(record.Package_image){ %>
+        <img src="/uploads/<%= record.Package_image %>" alt="<%= record.Package_image %>" style="width: 59px; margin-top: 0.2rem; margin-left: 27rem;">
+      <% } %>
+      <div class="form-group">
+        <div class="col-sm-10 button" style="display: flex; position: relative;">
+          <button type="submit" class="btn btn-primary">Update Hotel Package</button>
+          <a href="/packages/ViewHotelPackage" class="nav-link">View All Packages</a>
+        </div>
+      </div>
+      
+    </form>
+   </div>
+  </div>
+
+
+<script src="../public/javascripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+

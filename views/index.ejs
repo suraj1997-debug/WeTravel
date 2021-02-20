@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+ <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li class="active"><a href="/index" class="current">Home</a></li>
+        <li><a href="/tours">Tours</a></li>
+        <li><a href="/hotels">Hotels</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+
+
+
+  <!-- Intro -->
+  <section id="intro">
+    <div class="bg">
+    </div>
+    <div class="content">
+      <div class="content-heading">
+        <h1>Plan Your Travel Now...</h1>
+        <p>Experience the various exciting tour and travel packages and Make hotel reservations,</p>
+        <p style="margin-top: -15px;"> find vacation packages, search cheap hotels and events</p>
+      </div>
+      <div class="content-contain">
+        <form> 
+          <input type="text" name="cityname" placeholder="Enter City" style=" padding: 12px 11px !important; width: 15rem;">
+          <input type="text" name="select-search" placeholder="Search over a million tour and travels, sight seeings, hotels and more
+          " style="width: 27rem; padding: 12px 9px !important;">
+          <input type="submit" name="submit" class="btn btn-danger" value="search">
+        </form>
+      </div>
+      <div class="travel-icons">
+        <a href="/tours"><i class="fas fa-globe"></i><span>Tours</span></a>
+        <a href="/flights_booking"><i class="fas fa-plane"></i><span>Flights</span></a>
+        <a href="/book_travels"><i class="fas fa-taxi"></i><span>Car Rentals</span></a>
+        <a href="/hotels"><i class="fas fa-bed"></i><span>Hotel</span></a>
+      </div>
+  </div>
+  </section>
+
+
+  <!-- Travel Content  -->
+ <section id="travel-container">
+   <div class="travels">
+   <div class="heading">
+     <h1><span>Top&nbsp;</span>Tour Packages</h1>
+     <div class="title-line">
+       <div class="tl1"></div>
+       <div class="tl2"></div>
+       <div class="tl3"></div>
+     </div>
+     <p>World's leading tour and travels Booking website,Over 30,000 packages worldwide.</p>
+   </div>
+   <div class="cards">
+     <% if(record.length > 0) {
+       record.forEach((row)=>{
+      if(parseInt(row.Discount)> 30){
+
+      %>
+     <div class="travel-card">
+      
+      <div class="image">
+        <li><a><%= row.Discount %>%</a><span>off</span></li>
+        <img src="/uploads/<%= row.Package_image %>" alt="">
+      </div>
+      <div class="travel-card-content">
+        <h3><a href="/tours/book/<%= row._id %>"><%= row.Package_name %></a></h3>
+        <div class="icons">
+          <i class="fas fa-clock"  style="color: #8e8e1f;" title="Tour timing"></i>
+          <i class="fas fa-info-circle" style="color:green" title="View more details"></i>
+          <i class="fas fa-money-bill-alt" style="color: #f19e07;" title="Price"></i>
+          <i class="fas fa-map-marker-alt" style="padding-right: 10px !important; color: #1b1b8e;" title="Location"></i>
+        </div>
+      </div>
+     </div>
+     <%  }})} %>
+   </div>
+  </div>
+ </section>
+<hr>
+
+<!-- Hotel-content -->
+
+<section id="hotels">
+  <div class="hotel-container">
+    <div class="heading">
+       <h1><span>Hotels&nbsp;</span>Booking Open Now!</h1>
+       <div class="title-line">
+        <div class="tl1"></div>
+        <div class="tl2"></div>
+        <div class="tl3"></div>
+      </div>
+      <p> World's leading Hotel Booking website,Over 30,000 Hotel rooms worldwide. Book Hotel rooms and enjoy your holidays with distinctive experience</p>
+    </div>
+    <div class="hotel-cards">
+      <% if(records.length > 0) {
+        records.forEach((row1)=>{
+       if(parseInt(row1.Discount)> 30){
+ 
+       %>
+      <div class="card">
+        <div class="image">
+          <li><a><%= row1.Discount %>%</a><span>off</span></li>
+          <img src="/uploads/<%= row1.Package_image %>" alt="">
+          <h3>Available Tickets:&nbsp;<%= row1.Tickets_available %> </h3>
+        </div>
+        <div class="hotels-card-content">
+          <div class="left">
+          <a href="/hotels/<%= row1._id %>"><%= row1.Package_name %></a>
+          <h3>City:&nbsp;<%= row1.Package_location %></h3>
+          <h3>Rating:&nbsp;<%= row1.Ratings %></h3>
+        </div>
+        <div class="right">
+          <h2>Rs.<%= row1.Package_Price %></h2>
+        </div>
+        </div>
+      </div>
+      <%  }})} %>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<%- include('index-testimonials.ejs') %>
+
+
+
+<%- include('index-footer.ejs') %>
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index-hotels.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+ <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/tours">Tours</a></li>
+        <li class="active"><a href="/hotels" class="current">Hotels</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <!-- Page Header -->
+
+<section id="page-header">
+  <div class="heading">
+    <h1>Hotels</h1>
+  </div>
+</section>
+
+
+
+<!-- Hotels -->
+
+<section id="page-content">
+  <div class="hotel-container">
+    <div class="hotel-cards">
+      <% if(records.length > 0){
+        records.forEach((row)=>{
+     %>
+      <div class="card">
+        <div class="offer">
+          <li><a><%= row.Discount %>%</a><span>off</span></li>
+        </div>
+      <div class="card-container">
+      <div class="image">
+        <img src="/uploads/<%= row.Package_image %>" alt="">
+        <h2><%= row.Ratings %></h2>
+        <h3>Available Rooms:&nbsp;<%= row.Tickets_available %></h3>
+      </div>
+      <div class="card-content">
+      <div class="content">
+        <h1><%= row.Package_name %></h1>
+        <li><span><i class="fas fa-map-marker-alt"></i></span><a><%= row.Package_address %></a></li>
+        <li><span><i class="fas fa-phone"></i></span><a>1800-40-2222</a></li>
+      </div>
+      <div class="price">
+        <li><a>Price</a><span>(<%= row.Package_Duration %>&nbsp;days/<%= parseInt(row.Package_Duration)-1 %>&nbsp;nights)</span></li>
+        <h1><%= row.Package_Price %></h1>
+        <a href="/hotels/<%= row._id %>" class="btn btn-danger">Details</a>
+      </div>
+      </div>
+     </div>
+    </div>
+    <% })} %>
+  </div>
+  </div>
+</section>
+
+
+
+
+
+
+<%- include('index-testimonials.ejs') %>
+
+<%- include('index-footer.ejs') %>
+
+</body>
+
+</html>

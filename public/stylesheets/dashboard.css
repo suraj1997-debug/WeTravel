@@ -1,0 +1,349 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    background-color: rgb(39 36 34);
+    position: fixed;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.left{
+    display: block;
+    margin: 16px;
+    width: 25%;
+}
+
+.left h1{
+    font-size: 2rem;
+    margin-left: 76px;
+    color: #ff2a00;
+    font-weight: bold;
+    font-family: sans-serif;
+    
+}
+
+.right{
+    display: flex;
+    flex-direction: row;
+    margin: 16px;
+    width: 16%;
+    margin-left: 69rem;
+}
+
+
+.right .nav{
+
+    font-size: 1.2rem;
+    
+    color: #464040;
+    background-color: yellow;
+    border-radius: 5px;
+   
+    margin-right: 2rem;
+    padding: 8px 12px;
+    transition: .5s;
+    transition-property: background-color;
+}
+
+.right .nav:hover {
+    color: white;
+    background-color: #31ff00;
+}
+
+.right .logout_btn{
+    background-color: blue;
+    padding: 8px 12px;
+   
+    color: white;
+    border-radius: 5px;
+   
+    
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: .5s;
+    transition-property: background;
+}
+
+.right .logout_btn:hover{
+    
+    background: rgb(255 14 14);
+}
+
+
+.nav-bar{
+    width: 74%;
+    position: fixed;
+    margin-left: 391px;
+    margin-top: 76px;
+    box-shadow: 2px 2px 10px black;
+    background-color: #181925;
+    transition: 0.5s;
+    transition-property: margin-left,width;
+}
+
+.nav-bar .nav-bar-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.nav-bar .nav-bar-item h1{
+    padding: 10px 10px;
+    color: #c6f702;
+    text-transform: uppercase;
+}
+
+.nav-bar .nav-bar-item h2{
+    color: #f1a51b;
+    padding: 10px 19px;
+
+}
+
+
+
+.sidebar{
+    width: 25%;
+    height: 100vh;
+    background-color: rgb(53, 47, 47);
+    position: fixed;
+    left: 0;
+    display: flex;
+    margin-top: 69px;
+    padding-top: 30px;
+    flex-direction: column;
+    transition: 0.5s;
+    transition-property: left;
+}
+
+.sidebar .row .profile-image{
+    background: url(../images/profile.png) no-repeat center center/cover;
+    height: 100px;
+    width: 100px;
+    outline: none;
+    margin-left: 9rem;
+    border: none;
+    margin-top: 1rem;
+    border-radius: 100px;
+  
+}
+
+.sidebar .row h4{
+    margin-top: 1.5rem;
+    padding-left: 9.7rem;
+    margin-bottom: 1.7rem;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    transition-property: margin-top;
+}
+
+.icons .awitem{
+  
+    font-size: 1.1rem;
+    
+}
+
+
+
+.icons a .fas{
+    color: white !important;
+    line-height: 25px;
+    padding: 23px;
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 7.1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: .5s;
+    transition-property: background-color,border;
+}
+
+.icons a .current,.icons a .fas:hover{
+  
+    border: 2px solid #dad3d3;
+    background-color:#63b18b;
+}
+
+.icons .awitem .fas span{
+    margin-left: 1.1rem;
+} 
+
+
+
+
+label #sidebar_btn{
+    color: white;
+    position: fixed;
+    font-size: 26px;
+    z-index: 1;
+    left: 407px;
+    top: 24px;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property: margin-left;
+}
+
+label #sidebar_btn:hover{
+    color: #11efef;
+}
+
+
+.content{
+    position: fixed;
+    margin-left: 394px;
+    height: 72vh;
+    width: 73.7%;
+    margin-top: 192px;
+    box-shadow: 2px 2px 10px black;
+    background-color: #0e0d0c52;
+    z-index: -1;
+    outline: none;
+    transition: 0.5s;
+    transition-property: margin-left,width;
+}
+
+.content .content-boxes{
+    position: fixed;
+    margin: 31px 0px 0px 83px;
+    display: grid;
+    width: 61rem;
+    grid-row-gap: 1rem;
+    grid-column-gap: 6rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 65vh;
+    transition: 0.5s;
+    transition-property: margin-left;
+}
+
+.content .content-boxes .content-box{
+    display: block;
+    outline: none;
+    margin: 15px;
+    outline: none;
+    box-shadow: 2px 2px 10px black;
+    border-radius: 10px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+
+.content .content-boxes .content-box .content-heading{
+
+position: absolute;
+
+display: flex;
+
+border-radius: 10px 10px 0px 0px;
+
+outline: none;
+
+background-color: #12b1e2;
+
+height: 154px;
+
+width: 100%;
+
+flex-direction: column;
+
+align-items: center;
+
+justify-content: center;
+}
+
+
+
+.content .content-box .content-heading a .fas{
+    font-size: 6rem;
+    color: #f9eeee;
+    padding: 10px;
+}
+
+.content .content-boxes .content-box .content-footer{
+    background-color:#010208;
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    height: 200px;
+    outline: none;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.content .content-boxes .content-box .content-footer h1{
+    color: #f7ecec;
+    margin-top: 10rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    font-family: monospace;
+}
+
+
+.content .content-boxes .content-box .content-footer h1 span{
+    color: #eccd28;
+    font-size: 2rem;
+    font-family: monospace;
+}
+
+
+
+#check:checked~ .sidebar{
+    left: -320px;
+}
+
+#check:checked ~ .sidebar .icons{
+    
+    margin-top: -220px;
+   
+}
+
+#check:checked ~ .sidebar .icons .awitem span{
+    display: none;
+}
+
+#check:checked ~ .sidebar .icons .awitem .fas{
+    font-size: 25px;
+    margin-left: 220px;
+    width: 160px;
+
+}
+
+
+
+
+#check:checked ~ .content{
+ margin-left: 69px;
+ width:95%;
+}
+
+#check:checked ~ .content .content-boxes{
+    margin-left:310px;
+}
+
+#check:checked ~ .nav-bar{
+    margin-left:69px;
+    width:95%;
+}
+
+#check{
+    display: none;
+}
+
+
+

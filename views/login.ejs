@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+     
+      <div id="signupbox" style="margin-top: 50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <div class="panel-title">Login</div>
+            <div style="float: right; font-size: 85%; position: relative; top: -10px;"></div>
+          </div>
+          <div class="panel-body">
+            <form action="/" class="form-horizontal" role="form" method="post" style="margin-top: 22px;">
+             
+              <% if(msg !='') {%>
+                <div id="signupalert"  class="alert alert-danger">
+                  <p><%= msg %></p>
+                </div>
+                <% } %>
+            
+              <div class="form-group row">
+                <label for="uname" class="col-md-3 control-label">User Name</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control"  name="uname" placeholder="Enter username" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="password" class="col-md-3 control-label">Password</label>
+                <div class="col-md-9">
+                  <input type="password" class="form-control"  name="password" placeholder="Enter Password" required>
+                </div>
+              </div>
+             
+              <div class="form-group">
+                <div class="col-md-offset col-md-9" id="button">
+                  <input type="submit" name="submit" class="btn btn-info" value="Login">
+                </div>
+              </div>
+              <p>If you don't have an account. <a href="/signup"> Register</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

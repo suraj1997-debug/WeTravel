@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/categories.css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+</head>
+
+<body>
+
+
+    <input type="checkbox" id="check">
+
+    <!-- Navbar -->
+
+   <%- include('header.ejs') %>
+
+    <div class="nav-bar">
+        <div class="nav-bar-item">
+            <h1>Categories</h1>
+            <ul style="display: flex; flex-direction: row;">
+                <li><a href="/dashboard">home</a></li>
+                <li><a><i class="fas fa-arrow-right"
+                            style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+                <li><a href="/categories">Categories</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <%- include('sidebar.ejs') %>
+
+
+    <div class="container">
+        <div class="content-box">
+            <div class="card">
+                <div class="front">
+                    <div class="card-left">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="card-right">
+                        <a href="/categories/destinations">Destination Category</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card">
+                <div class="front">
+                    <div class="card-left">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="card-right">
+                        <a href="/categories/PackageCategory">Package Category</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

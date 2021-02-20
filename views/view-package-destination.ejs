@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/view-package-destination.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+        <h1>View Package Destinations</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages/ViewPackageDestination">View Package Destinations</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('package_sidebar.ejs') %>
+  
+  <div class="travel-container">
+     <a href="/packages/CreatePackageDestination" class="nav-link">Add Package Destinations</a>
+     <div class="table-container" style=" margin: 0px 13px; margin-top: 2px;">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+             
+                <th scope="col">Package Name</th>
+                <th scope="col">Package Location</th>
+                <th scope="col">Package Description</th>
+                <th scope="col">Destination Image</th>
+                <th scope="col" colspan="2">Action</th>
+              </tr>
+            </thead>
+            <tbody class="table-light" style="color:#631919; font-weight: bold;">
+                <% if(records.length > 0){
+                   records.forEach((row)=>{
+                %>
+              <tr> 
+                <td><%= row.Package_name %></td>
+                <td><%= row.Package_location %></td>
+                <td><%= row.Description %></td>
+                <td><img src="/uploads/<%=row.destination_image%>" alt="<%= row.destination_image %>" style="width: 60px; height: 45px;"></td>
+                <td><a href="/packages/ViewPackageDestination/edit/<%= row._id %>"><i class="fas fa-edit" style="color: rgb(25 27 26); font-weight: bold;"></i></a></td>
+                <td><a href="/packages/ViewPackageDestination/delete/<%= row._id %>"><i class="fas fa-trash-alt" style="color: rgb(150 11 11); font-weight: bold;"></i></a></td>
+              </tr>
+             <% })} %>
+            </tbody>
+          </table>
+          
+     </div>
+   
+
+  </div>
+
+
+
+<script src="../public/javascripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

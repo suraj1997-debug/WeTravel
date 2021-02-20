@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/index-contact.css' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+ <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="/index">Home</a></li>
+        <li><a href="/tours">Tours</a></li>
+        <li><a href="/hotels">Hotels</a></li>
+        <li  class="active"><a href="/contact" class="current">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+
+  <!-- Page Header -->
+
+<section id="page-header">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29942.51622446513!2d72.98773511697571!3d20.2665254306212!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be0cb5edb1ce063%3A0x65fe78dc1cdaeb1f!2sSilvassa%2C%20Dadra%20and%20Nagar%20Haveli!5e0!3m2!1sen!2sin!4v1602328429761!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</section>
+
+
+
+  <!-- contactus  -->
+  <section id="contact">
+    <% if(success != '') { %> 
+      <div class="alert alert-success alert-dismissible"  role="alert" > 
+          <strong>Success:&nbsp;</strong><%- success %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <% } %>
+    <div class="heading">
+      <h1 class="text-center">
+        Contact Us
+      </h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur sit perferendis magni!</p>
+      <p style="margin-top: -15px;">Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+    </div>
+    <div class="contact-container">
+      <div class="contactInfo">
+       <div class="boxes">
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="text">
+            <h3>Address</h3>
+            <p>103,DEV Appartment,Vanmali Park Society<br>Samarvani,Silvassa<br>396230</p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-phone-square"></i>
+          </div>
+          <div class="text">
+            <h3>Phone</h3>
+            <p>798-481-8881</p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="icon">
+            <i class="fas fa-envelope-square"></i>
+          </div>
+          <div class="text">
+            <h3>Email</h3>
+            <p>suraj18903@gmail.com</p>
+          </div>
+        </div>
+        </div>
+        <div class="contact-form">
+          <form action="/contact" method="post" autocomplete="off">
+            <h2>Send Message</h2>
+            <div class="inputBox">
+              <input type="text" name="full_name" required>
+              <span>Full Name</span>
+            </div>
+            <div class="inputBox">
+              <input type="text" name="email" required>
+              <span>Email</span>
+            </div>
+            <div class="inputBox">
+              <textarea type="text" name="message" required></textarea>
+              <span>Type your Message Here...</span>
+            </div>
+            <div class="inputBox">
+              <input type="submit" name="submit" value="Send">
+            </div>
+          </form>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+
+  <%- include('index-testimonials.ejs') %>
+
+<%- include('index-footer.ejs') %>
+
+</body>
+
+</html>

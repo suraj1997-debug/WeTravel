@@ -1,0 +1,17 @@
+ <!-- header -->
+ <header>
+    <% if(loginUser) { %>
+    <div class="navbar-header nav-item">
+      <h1>Welcome:</h1>
+      <a href="#" class="login"><%= loginUser %>&nbsp;<i class="fas fa-users"
+          style=" background-color: rgb(219, 219, 14); padding: 4px;"></i></a>
+    </div>
+    <% } %>
+    <% if(adminUser) { %>
+    <div class="navbar-header nav-item">
+      <h1>Welcome:</h1>
+      <a href="#" class="login"><%= adminUser %>&nbsp; <i class="fas fa-user"
+          style=" background-color: rgb(62, 219, 14); padding: 4px;"></i></a>
+    </div>
+    <% } %>
+  </header>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/update_package_destination.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+ 
+</head>
+
+<body>
+
+
+  <input type="checkbox" id="check">
+
+  <!-- Navbar -->
+
+  <%- include('header.ejs') %>
+
+  <div class="nav-bar">
+    <div class="nav-bar-item">
+      <h1>Update Package Destination</h1>
+      <ul style="display: flex; flex-direction: row;">
+        <li><a href="/dashboard">home</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages/ViewPackageDestination">View Package Destination</a></li>
+        <li><a><i class="fas fa-arrow-right" style="font-size: 0.9rem; color: antiquewhite; padding: 0px 5px;"></i></a></li>
+        <li><a href="/packages/ViewPackageDestination/edit/:id">Update Package Destination</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%- include('package_sidebar.ejs') %>
+  
+  <div class="travel-container">
+    <% if(success != '') { %>
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <strong>Success:&nbsp;</strong> <%= success %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% } %>
+    
+     
+   <div class="form-container">
+    <form action="/packages/ViewPackageDestination/edit/<%= record._id %>" method="post" enctype="multipart/form-data" autocomplete="off">
+
+      <div class="form-group row">
+        <label for="type" class="col-sm-2 col-form-label">Package Name</label>
+        <div class="col-sm-10 form-input" >
+            <select name="package_name" class="form-control" style="color: rgb(17, 16, 16); font-weight: bold; font-size: 1.1rem;padding: 4px 0px;">
+                <option value="">Choose Package Name</option>
+                <% if(records.length > 0){
+                   records.forEach(function(row){  
+                %>
+                <option value="<%= row.Package_name %>"<% if(row.Package_name == record.Package_name) { %> selected <% }%>><%= row.Package_name %></option>
+                <% })} %>
+            </select>
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label for="location" class="col-sm-2 col-form-label">Package Location</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="package_loc" value="<%= record.Package_location %>" >
+        </div>
+      </div>
+      <div class="form-group row ">
+        <label for="description" class="col-sm-2 col-form-label">Package Description</label>
+        <div class="col-sm-10 form-input">
+          <input type="text" class="form-control" name="package_desc" value="<%= record.Description %>" >
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="img" class="col-sm-2 col-form-label" style="margin-top: 1rem;">Package Image</label>
+        <div class="col-sm-10">
+        <input type="file" style="padding: 4px 0px; font-size: 1.1rem; width: 24rem;" class="form-control-file img" name="packagedest_img">
+      </div>
+      </div>
+      <% if(record.destination_image){ %>
+        <img src="/uploads/<%= record.destination_image %>" alt="<%= record.destination_image %>" style="width: 90px; margin-top: 0.4rem; margin-left: 27rem;">
+      <% } %> 
+      <div class="form-group">
+        <div class="col-sm-10 button" style="display: flex;">
+          <button type="submit" class="btn btn-primary">Update Package Destination</button>
+          <a href="/packages/ViewPackageDestination" class="nav-link">View Package Destinations</a>
+        </div>
+      </div>
+      
+    </form>
+   </div>
+  </div>
+
+
+<script src="../public/javascripts/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

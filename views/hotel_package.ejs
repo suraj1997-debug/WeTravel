@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/hotel_package.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+
+ <%- include('index-header.ejs') %>
+
+
+
+  <!-- Navbar  -->
+
+  <section id="nav-bar">
+    <div class="logo">
+      <h1>We<span>Travel</span></h1>
+    </div>
+    <div class="nav">
+      <ul>
+        <li><a href="/index" >Home</a></li>
+        <li><a href="/tours">Tours</a></li>
+        <li class="active"><a href="/hotels" class="current">Hotels</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+        <li><a href="/logout">logout</a></li>
+        <% if(adminUser){ %>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <% } %>
+      </ul>
+    </div>
+
+  </section>
+
+<!-- Page Header -->
+
+<section id="page-header">
+  <div class="heading">
+    <h1>Hotels Package</h1>
+    <h2><%= records.Package_name %></h2>
+  </div>
+</section>
+
+
+
+<!-- Page Content -->
+
+<section id="page-content">
+    <div class="page-container">
+      <div class="upper">
+        <a href="/hotels" class="btn btn-danger" style="padding: 0px 20px;"><span><i class="fas fa-angle-left"></i></span>&nbsp;Back</a>
+      <div class="pricetop">
+        <p>Starting from</p>
+         <h3> <i class="fas fa-rupee-sign"></i> <%= records.Package_Price %> </h3>
+      </div>
+      <a href="/hotels/booking/<%= records._id %>" name="book" class="btn btn-primary">Book now</a>
+      <a href="#" name="query" class="btn btn-danger">Submit Query</a>
+    </div>
+      <h1><i class="fas fa-list-alt"></i> &nbsp;Summary</h1>
+      <div class="summary">
+        <div class="image">
+          <img src="/uploads/<%= records.Package_image %>" alt="">
+        </div>
+        <div class="content">
+        <h2>Hotel Name:</h2><p><%= records.Package_name %></p>
+        <h2>Location:</h2><p><%= records.Package_location %></p>
+        <h2>Discount:</h2><p><%= records.Discount %></p>
+        <h2>Hotel Stay:</h1><p><%= records.Package_Duration %> days/<%= parseInt(records.Package_Duration)-1 %> nights</p>
+        <h2>Ratings:</h2><p><%= records.Ratings %></p>
+        <h2>Rooms Available:</h2><p><%= records.Tickets_available %></p>
+        <h2>Address:</h2><p><%= records.Package_address %></p>
+      </div>
+    </div>
+    <h1 style="margin-top: 4rem;"><i class="fas fa-info-circle"></i> &nbsp;Description</h1>
+      <div class="hotel-Description">
+        <p><%= records.Package_Description %></p>
+       </div>
+   
+    <h1 style="margin-top: 4rem;  margin-bottom: 4rem;"><i class="fas fa-map-marker-alt"></i> &nbsp;Location on Map</h1>
+    <div class="map">
+      <iframe src="<%= records.Package_map %>" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    
+    </div>
+</section>
+
+<%- include('index-testimonials.ejs') %>
+
+<!-- terms -->
+
+<section id="terms">
+  <h1>Terms & Conditions</h1>
+  <div class="terms-container">
+  <div class="policy">
+    <div class="payment">
+      <h2>Payment Policy</h2>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p><i class="fas fa-check"></i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum.</p>
+    </div>
+    <div class="cancel">
+      <h2>Cancellation Policy</h2>
+      <h3>If you cancel your Holiday.</h3>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+      <p><i class="fas fa-check"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+      <p><i class="fas fa-check"></i>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum.</p>
+    </div>
+  </div>
+  <div class="privacy">
+    <h2>Privacy Policy</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea suscipit exercitationem libero vitae sint doloribus quibusdam, expedita enim dolor dignissimos quos neque delectus ducimus voluptas! Similique alias voluptatem culpa tempore nobis sit necessitatibus eaque totam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium id ipsam iure vitae quidem aliquid, sed labore consequuntur quo assumenda quibusdam repellat fugit?</p>
+  </div>
+</div>
+</section>
+
+
+
+
+<%- include('index-footer.ejs') %>
+
+</body>
+
+</html>
